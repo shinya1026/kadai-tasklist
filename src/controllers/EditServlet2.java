@@ -30,7 +30,8 @@ public class EditServlet2 extends HttpServlet {
     /**
      * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
      */
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
         EntityManager em = DButil.createEntityManager();
 
         // 該当のIDのメッセージ1件のみをデータベースから取得
@@ -43,9 +44,12 @@ public class EditServlet2 extends HttpServlet {
         request.setAttribute("_token", request.getSession().getId());
 
         // メッセージIDをセッションスコープに登録
-        request.getSession().setAttribute("task_id", t.getId());
-
+        if (t != null) {
+            request.getSession().setAttribute("task_id", t.getId());
+        }
         RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/tasks/edit2.jsp");
-        rd.forward(request, response);}
+        rd.forward(request, response);
+
+    }
 
 }
