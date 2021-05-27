@@ -7,8 +7,7 @@
             <c:when test="${task != null}">
                 <h2>id : ${task.id} のタスク編集ページ</h2>
 
-                <form method="POST"
-                    action="${pageContext.request.contextPath}/update">
+                <form method="POST" action="${pageContext.request.contextPath}/update">
                     <c:import url="_form2.jsp" />
                 </form>
 
